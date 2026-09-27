@@ -10,23 +10,23 @@ A relational database system that models a real-world blood donation network —
  
 Most student database projects stop at schema + basic SELECTs. This one is designed to answer a real operational question a blood bank network would actually ask:
  
-- *"Which donor is physically closest to a hospital that's critically low on their blood type, right now?"*
-- *"If a donation comes in, how do we update stock and close out a matching request atomically, without leaving the database in an inconsistent state if something fails midway?"*
+- *Which donor is physically closest to a hospital that's critically low on their blood type, right now?*
+- *If a donation comes in, how do we update stock and close out a matching request atomically, without leaving the database in an inconsistent state if something fails midway?*
 ## 🧱 Schema Overview
  
 | Table | Purpose |
 |---|---|
-| `Hospitals` | Hospital locations (lat/long) and emergency contact info |
-| `Donors` | Donor details, blood type, location, last donation date |
-| `BloodStock` | Live unit count per blood type, per hospital |
-| `BloodRequests` | Emergency blood requests with urgency level and status |
-| `DonationHistory` | Log of every donation: who, where, when, how much |
+| Hospitals | Hospital locations (lat/long) and emergency contact info |
+| Donors | Donor details, blood type, location, last donation date |
+| BloodStock | Live unit count per blood type, per hospital |
+| BloodRequests | Emergency blood requests with urgency level and status |
+| DonationHistory | Log of every donation: who, where, when, how much |
  
 **Relationships:**
-- `BloodStock.HospitalID` → `Hospitals.HospitalID`
-- `BloodRequests.HospitalID` → `Hospitals.HospitalID`
-- `DonationHistory.DonorID` → `Donors.DonorID`
-- `DonationHistory.HospitalID` → `Hospitals.HospitalID`
+- BloodStock.HospitalID → Hospitals.HospitalID
+- BloodRequests.HospitalID → Hospitals.HospitalID
+- DonationHistory.DonorID → Donors.DonorID
+- DonationHistory.HospitalID → Hospitals.HospitalID
 ## ⚙️ Tech Stack
  
 - **Database:** Microsoft SQL Server (T-SQL)
