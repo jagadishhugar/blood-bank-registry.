@@ -42,7 +42,7 @@ Uses the **Haversine formula** to calculate real great-circle distance (km) betw
 - Most recent donation per donor without a self-join (ROW_NUMBER())
 - Each hospital's share of network-wide stock per blood type
 - Stock-staleness ranking (DENSE_RANK()) to flag hospitals with outdated inventory
-### 3. vw_CriticalStock view
+### 3. vw_Critical Stock view
 A single queryable view that flags any hospital/blood-type combination that's out of stock, low on stock, or has open high-urgency requests against it — the kind of view a real dashboard or alerting job would sit on top of.
  
 ### 4. sp_Process Donation stored procedure
