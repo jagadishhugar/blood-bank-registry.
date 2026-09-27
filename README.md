@@ -30,26 +30,26 @@ Most student database projects stop at schema + basic SELECTs. This one is desig
 ## ⚙️ Tech Stack
  
 - **Database:** Microsoft SQL Server (T-SQL)
-- **Concepts used:** DDL/DML, CHECK constraints, foreign keys, indexes, CTEs, window functions (`RANK`, `ROW_NUMBER`, `DENSE_RANK`), views, stored procedures, `TRY...CATCH` error handling, transactions
+- **Concepts used:** DDL/DML, CHECK constraints, foreign keys, indexes, CTEs, window functions (RANK, ROW_NUMBER, DENSE_RANK), views, stored procedures, TRY...CATCH error handling, transactions
 ## ✨ Key Features
  
 ### 1. Geospatial nearest-hospital matching
 Uses the **Haversine formula** to calculate real great-circle distance (km) between every donor and every hospital — including a variant that only matches hospitals currently stocking the donor's blood type. Turns static lat/long columns into an actual "find your nearest donation point" feature.
  
 ### 2. Analytics layer (CTEs + window functions)
-- Donor donation-count leaderboard (`RANK()`)
+- Donor donation-count leaderboard (RANK())
 - Running monthly network-wide donation totals
-- Most recent donation per donor without a self-join (`ROW_NUMBER()`)
+- Most recent donation per donor without a self-join (ROW_NUMBER())
 - Each hospital's share of network-wide stock per blood type
-- Stock-staleness ranking (`DENSE_RANK()`) to flag hospitals with outdated inventory
-### 3. `vw_CriticalStock` view
+- Stock-staleness ranking (DENSE_RANK()) to flag hospitals with outdated inventory
+### 3. vw_CriticalStock view
 A single queryable view that flags any hospital/blood-type combination that's out of stock, low on stock, or has open high-urgency requests against it — the kind of view a real dashboard or alerting job would sit on top of.
  
-### 4. `sp_ProcessDonation` stored procedure
+### 4. sp_Process Donation stored procedure
 Wraps a full donation event — logging the donation, updating the donor's eligibility date, incrementing hospital stock, and auto-fulfilling a matching pending request — in a single transaction with rollback on failure, so a mid-process error can't leave stock and history out of sync.
  
 ### 5. Indexing
-Indexes added on the columns actually filtered or joined across the query set (`BloodType`, `HospitalID`, `RequestStatus` + `UrgencyLevel`, `DonorID`), with reasoning documented inline.
+Indexes added on the columns actually filtered or joined across the query set (BloodType, HospitalID, RequestStatus + UrgencyLevel, DonorID), with reasoning documented inline.
  
 ## 🚀 Setup & Run (MSSQL)
  
@@ -79,14 +79,14 @@ Indexes added on the columns actually filtered or joined across the query set (`
  
 | File | Description |
 |---|---|
-| `BBR_upgraded.sql` | Full schema, indexes, seed data, 25 core queries, analytics queries, geospatial matching, view, and stored procedure |
+| BBR_upgraded.sql | Full schema, indexes, seed data, 25 core queries, analytics queries, geospatial matching, view, and stored procedure |
  
 ## 🔭 Possible Extensions
  
 - Port to PostgreSQL/MySQL for free cloud hosting demos (e.g. Supabase, Railway)
 - Wrap in a REST API (FastAPI/Flask) so it can be queried from a live web demo
-- Add a trigger to auto-flag `RequestStatus = 'Cancelled'` requests for cleanup after 1 year instead of running the DELETE manually
-- Build a simple Streamlit/Power BI dashboard on top of `vw_CriticalStock`
+- Add a trigger to auto-flag RequestStatus = Cancelled requests for cleanup after 1 year instead of running the DELETE manually
+- Build a simple Streamlit/Power BI dashboard on top of vw_CriticalStock
 
 ## 👤 Author
 
