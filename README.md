@@ -1,4 +1,3 @@
-Readme · MD
 # 🩸 Emergency Blood Bank Registry
  
 A relational database system that models a real-world blood donation network — tracking donors, hospitals, live blood stock, emergency requests, and donation history. Built to go beyond basic CRUD by including **geospatial donor-to-hospital matching**, **analytics with window functions**, a **critical-stock monitoring view**, and a **transactional donation-processing procedure**.
