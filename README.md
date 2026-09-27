@@ -88,8 +88,11 @@ Indexes added on the columns actually filtered or joined across the query set (`
 - Wrap in a REST API (FastAPI/Flask) so it can be queried from a live web demo
 - Add a trigger to auto-flag `RequestStatus = 'Cancelled'` requests for cleanup after 1 year instead of running the DELETE manually
 - Build a simple Streamlit/Power BI dashboard on top of `vw_CriticalStock`
+
 ## 👤 Author
- 
-**Jagadish Hugar**
-[GitHub](https://github.com/jagadishhugar) · [LinkedIn](https://www.linkedin.com/in/jagadishhugar)
+
+**Jagadish Hugar**  
+[![Portfolio](https://shields.io/badge/My_Portfolio-4285F4.svg?logo=mainwp&logoColor=white)](https://jagadishhugar.github.io/portfolio)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/jagadishhugar) 
+[![GitHub](https://img.shields.io/badge/GitHub-8A2BE2.svg?logo=GitHub&logoColor=white)](https://github.com/jagadishhugar)
  
